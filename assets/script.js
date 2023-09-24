@@ -8,35 +8,35 @@ var questions = {
     question5: "In which National Park can you find the world’s largest known living single stem tree, General Sherman?"
 };
 
-var answersQuestion1 = {
+var optionsQuestion1 = {
     question1Option1: "Jimmy Carter",
     question1Option2: "Theodore Roosevelt",
     question1Option3: "William Taft",
     question1Option4: "Barack Obama"
 };
 
-var answersQuestion2 = {
+var optionsQuestion2 = {
     question2Option1: "Yosemite National Park",
     question2Option2: "Sequoia National Park",
     question2Option3: "Yellowstone National Park",
     question2Option4: "Mount Rainier National Park"
 };
 
-var answersQuestion3 = {
+var optionsQuestion3 = {
     question3Option1: "Grand Canyon National Park",
     question3Option2: "Bryce Canyon National Park",
     question3Option3: "Joshua Tree National Park",
     question3Option4: "Death Valley National Park"
 };
 
-var answersQuestion4 = {
+var optionsQuestion4 = {
     question4Option1: "Yosemite National Park",
     question4Option2: "Hawaii Volcanoes National Park",
     question4Option3: "Rocky Mountain National Park",
     question4Option4: "Grand Teton National Park"
 };
 
-var answersQuestion5 = {
+var optionsQuestion5 = {
     question5Option1: "Redwood National Park",
     question5Option2: "Olympic National Park",
     question5Option3: "King's Canyon National Park",
@@ -44,12 +44,14 @@ var answersQuestion5 = {
 };
 
 var correctAnswers = {
-    question1: answersQuestion1.question1Option1,
-    question2: answersQuestion2.question2Option3,
-    question3: answersQuestion3.question3Option4,
-    question4: answersQuestion4.question4Option2,
-    question5: answersQuestion5.question5Option4
+    question1: optionsQuestion1.question1Option1,
+    question2: optionsQuestion2.question2Option3,
+    question3: optionsQuestion3.question3Option4,
+    question4: optionsQuestion4.question4Option2,
+    question5: optionsQuestion5.question5Option4
 };
+
+
 
 
 
@@ -63,7 +65,11 @@ var countdownTimer = document.getElementById("timer");
 
 
 
-//Need a function to start the game
+//Need a function to navigate to next question
+
+function navigate(direction) {
+    
+}
 
 
 
@@ -91,24 +97,26 @@ function countdown() {
             //stop timer
             clearInterval(countdown);
             //do i need a display message?
+            // do i need a function to end the quiz?
+            endQuiz();
         }
     }, 1000);
 }
 
-let timeLeft = 60; // 1 minute
-function updateTimer() {
-    const timerElement = document.getElementById("quizTimer");
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    timerElement.textContent = Time Left: ${ minutes }:${ seconds < 10 ? "0" : "" }${ seconds };
+// let timeLeft = 60; // 1 minute
+// function updateTimer() {
+//     const timerElement = document.getElementById("quizTimer");
+//     const minutes = Math.floor(timeLeft / 60);
+//     const seconds = timeLeft % 60;
+//     timerElement.textContent = Time Left: ${ minutes }:${ seconds < 10 ? "0" : "" }${ seconds };
 
-    if (timeLeft === 0) {
-        clearInterval(timerInterval);
-        endQuiz();
-    } else {
-        timeLeft--;
-    }
-}
+//     if (timeLeft === 0) {
+//         clearInterval(timerInterval);
+//         endQuiz();
+//     } else {
+//         timeLeft--;
+//     }
+// }
 
 
 //Need function to check if answer is correct
