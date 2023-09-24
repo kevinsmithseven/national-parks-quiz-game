@@ -60,6 +60,8 @@ var correctAnswers = {
 
 
 //Create variables using DOM
+var score = 0;
+var questionIndex = 0;
 var startButton = document.getElementById("start-button");
 var countdownTimer = document.getElementById("timer");
 

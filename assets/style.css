@@ -2,10 +2,13 @@
     --brown: #ab6334;
     --green: #869b5b;
     --black: #202020;
+    --beige: rgb(238, 226, 208);
+    --gray: rgb(151, 141, 141);
 }
 
 html {
     height: 100%;
+    background-color: var(--beige);
 }
 
 body {
@@ -17,7 +20,12 @@ body {
 /* Starting section */
 #start {
     text-align: center;
-    
+    margin: 175px 200px 0px 200px;   
+}
+
+h1 {
+    font-size: 225%;
+    text-shadow: 1px 1px 1px var(--gray);
 }
 
 main {
@@ -31,5 +39,16 @@ main {
 section img {
     width: 15%;
     border: 1px solid var(--black);
-    box-shadow: 1px 1px 1px lightgrey;
+    box-shadow: 2px 2px 1px rgb(151, 141, 141);
+    margin: 10px 0px 20px 0px;
+}
+
+#start-button {
+    background-color: var(--green);
+    border: none;
+    padding: 3px;
+    border: 0.5px solid var(--black);
+    border-radius: 4px 4px;
+    font-size: 150%;
+    color: white;
 }
