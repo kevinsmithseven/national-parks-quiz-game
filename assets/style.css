@@ -1,9 +1,14 @@
 :root {
+    --darkbrown: #5d4f36;
     --brown: #ab6334;
+    --orange: #e07529;
+    --darkorange: #a84a00;
+    --yellow: #faae32;
     --green: #869b5b;
     --black: #202020;
     --beige: rgb(238, 226, 208);
     --gray: rgb(151, 141, 141);
+    --bluegray: #7f7991;
 }
 
 html {
@@ -20,7 +25,7 @@ body {
 /* Starting section */
 #start {
     text-align: center;
-    margin: 175px 200px 0px 200px;   
+    margin: 175px 200px 0px 200px;
 }
 
 h1 {
@@ -37,7 +42,7 @@ main {
 }
 
 section img {
-    width: 15%;
+    width: 25%;
     border: 1px solid var(--black);
     box-shadow: 2px 2px 1px rgb(151, 141, 141);
     margin: 10px 0px 20px 0px;
@@ -51,4 +56,9 @@ section img {
     border-radius: 4px 4px;
     font-size: 150%;
     color: white;
+    margin-top: 15px;
+}
+
+#start-button:hover {
+    background-color: var(--darkorange);
 }
