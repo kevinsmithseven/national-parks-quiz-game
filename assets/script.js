@@ -1,8 +1,8 @@
 //Question and answer objects
 
 var questions = {
-    question1: "Which president established the greatest number of National Parks?", 
-    question2: "What was the very first National Park established?", 
+    question1: "Which president established the greatest number of National Parks?",
+    question2: "What was the very first National Park established?",
     question3: "Which National Park were scenes from Star Wars Episode IV: A New Hope filmed, representing the fictional planet of Tatooine?",
     question4: "The biggest single mountain on earth is found in which National Park?",
     question5: "In which National Park can you find the world’s largest known living single stem tree, General Sherman?"
@@ -59,6 +59,7 @@ var correctAnswers = {
 
 //Create variables using DOM
 var startButton = document.getElementById("start-button");
+var countdownTimer = document.getElementById("timer");
 
 
 
@@ -69,7 +70,45 @@ var startButton = document.getElementById("start-button");
 
 //Need function to run timer
 
-var
+function countdown() {
+
+    // set timer to start at 75 seconds
+    var timeLeft = 75;
+
+    var quizTimer = setInterval(function () {
+        // as long as "timeleft" is greater than 1
+        if (timeLeft > 1) {
+            // set the text content of countdownTimer to show remaining seconds
+            countdownTimer.textContent = timeLeft + " seconds remaining";
+            // decrement timeLeft by 1
+            timeLeft--;
+        } else if (timeLeft === 1) {
+            // when timeLeft gets to 0, set countdownTimer to "second" instead of "seconds"
+            countdownTimer.textContent = timeLeft + " second remaining";
+        } else {
+            // Once timeLeft gets to 0, set countdownTimer to an empty string
+            countdownTimer.textContent = "";
+            //stop timer
+            clearInterval(countdown);
+            //do i need a display message?
+        }
+    }, 1000);
+}
+
+let timeLeft = 60; // 1 minute
+function updateTimer() {
+    const timerElement = document.getElementById("quizTimer");
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerElement.textContent = Time Left: ${ minutes }:${ seconds < 10 ? "0" : "" }${ seconds };
+
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        endQuiz();
+    } else {
+        timeLeft--;
+    }
+}
 
 
 //Need function to check if answer is correct
