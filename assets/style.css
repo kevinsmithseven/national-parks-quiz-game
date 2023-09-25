@@ -50,7 +50,6 @@ section img {
 
 #start-button {
     background-color: var(--green);
-    border: none;
     padding: 3px;
     border: 0.5px solid var(--black);
     border-radius: 4px 4px;
@@ -60,5 +59,19 @@ section img {
 }
 
 #start-button:hover {
+    background-color: var(--darkorange);
+}
+
+button {
+    background-color: var(--green);
+    border: none;
+    padding: 3px;
+    border-radius: 4px 4px;
+    font-size: 150%;
+    color: white;
+    margin-top: 15px;
+}
+
+button:hover {
     background-color: var(--darkorange);
 }

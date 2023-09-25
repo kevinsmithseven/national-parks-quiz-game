@@ -1,55 +1,34 @@
 //Question and answer objects
 
-var questions = {
-    question1: "Which president established the greatest number of National Parks?",
-    question2: "What was the very first National Park established?",
-    question3: "Which National Park were scenes from Star Wars Episode IV: A New Hope filmed, representing the fictional planet of Tatooine?",
-    question4: "The biggest single mountain on earth is found in which National Park?",
-    question5: "In which National Park can you find the world’s largest known living single stem tree, General Sherman?"
-};
+var myQuestions = [{
+    questionText: "Which president established the greatest number of National Parks?",
+    questionChoices: ["Jimmy Carter", "Theodore Roosevelt", "William Taft", "Barack Obama"],
+    correctAnswer: "Jimmy Carter"
+}, {
+    questionText: "What was the very first National Park established?",
+    questionChoices: ["Yosemite National Park", "Sequoia National Park", "Yellowstone National Park", "Mount Rainier National Park"],
+    correctAnswer: "Yellowstone National Park",
+}, {
+    questionText: "Which National Park were scenes from Star Wars Episode IV: A New Hope filmed, representing the fictional planet of Tatooine?",
+    questionChoices: ["Grand Canyon National Park", "Bryce Canyon National Park", "Joshua Tree National Park", "Death Valley National Park"],
+    correctAnswer: "Death Valley National Park",
+}, {
+    questionText: "The biggest single mountain on earth is found in which National Park?",
+    questionChoices: ["Yosemite National Park", "Hawaii Volcanoes National Park", "Rocky Mountain National Park", "Grand Teton National Park"],
+    correctAnswer: "Hawaii Volcanoes National Park",
+}, {
+    questionText: "In which National Park can you find the world’s largest known living single stem tree, General Sherman?",
+    questionChoices: ["Redwood National Park", "Olympic National Park", "King's Canyon National Park", "Sequoia National Park"],
+    correctAnswer: "Sequoia National Park"
+}]
 
-var optionsQuestion1 = {
-    question1Option1: "Jimmy Carter",
-    question1Option2: "Theodore Roosevelt",
-    question1Option3: "William Taft",
-    question1Option4: "Barack Obama"
-};
+    
 
-var optionsQuestion2 = {
-    question2Option1: "Yosemite National Park",
-    question2Option2: "Sequoia National Park",
-    question2Option3: "Yellowstone National Park",
-    question2Option4: "Mount Rainier National Park"
-};
 
-var optionsQuestion3 = {
-    question3Option1: "Grand Canyon National Park",
-    question3Option2: "Bryce Canyon National Park",
-    question3Option3: "Joshua Tree National Park",
-    question3Option4: "Death Valley National Park"
-};
 
-var optionsQuestion4 = {
-    question4Option1: "Yosemite National Park",
-    question4Option2: "Hawaii Volcanoes National Park",
-    question4Option3: "Rocky Mountain National Park",
-    question4Option4: "Grand Teton National Park"
-};
 
-var optionsQuestion5 = {
-    question5Option1: "Redwood National Park",
-    question5Option2: "Olympic National Park",
-    question5Option3: "King's Canyon National Park",
-    question5Option4: "Sequoia National Park"
-};
-
-var correctAnswers = {
-    question1: optionsQuestion1.question1Option1,
-    question2: optionsQuestion2.question2Option3,
-    question3: optionsQuestion3.question3Option4,
-    question4: optionsQuestion4.question4Option2,
-    question5: optionsQuestion5.question5Option4
-};
+    
+  
 
 
 
@@ -65,6 +44,10 @@ var wrongPenalty = 10;
 var questionNumber = 0;
 var startButton = document.getElementById("start-button");
 var countdownTimer = document.getElementById("timer");
+var startSection = document.getElementById("start")
+
+
+
 
 
 
