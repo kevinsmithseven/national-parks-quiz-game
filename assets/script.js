@@ -21,90 +21,137 @@ const myQuestions = [{
     questionChoices: ["Redwood National Park", "Olympic National Park", "King's Canyon National Park", "Sequoia National Park"],
     correctAnswer: 3
 }]
+console.log(myQuestions);
 
 
 
-// Add in event listeners for start
 
 //Create variables 
 var score = 0;
+var questionIndex = 0;
 var wrongPenalty = 10;
 var questionNumber = 0;
 var startButton = document.getElementById("start-button");
 var countdownTimer = document.getElementById("timer");
 var startSection = document.getElementById("start-section")
+var quizSection = document.getElementById("quiz-section")
 var quizTimer;
 var timerCount;
+var createOl = document.createElement("ol");
 
 
 
 // Start Game
-function startGame() {
-    startButton.addEventListener("click", function () {
-        countdown();
-        startSection.style.display = "none";
-    })
+function startQuiz() {
+    // startSection.setAttribute.display = "none";
+    startSection.classList.add("hide");
+    quizSection.classList.remove("hide");
+
+   showCurrentQuestion();
+   startTimer()
 }
 
+//where is event listener for user clicking on a choice?
 
-//Need a function to navigate to next question
+// Need to compare choice to correct answer; if wrong deduct penalty from timer
 
-function navigate(direction) {
+function showCurrentQuestion(){
+    var currentQuestion = myQuestions[questionIndex];
+
+    var title = document.getElementById("question-text");
+    title.textContent = currentQuestion.questionText;
+
+    for (let i = 0; i < currentQuestion.questionChoices.length; i++) {
+        var choice = currentQuestion.questionChoices[i];
+
+        var li = document.getElementById(`answer-${i}`);
+        li.textContent = choice
+        
+        li.dataset.correct = i === currentQuestion.correctAnswer;
+    }
+}
+
+function checkScore(isCorrect){
+    //Show either on screen or in the console if the answer is correct
+    console.log(isCorrect)
+
+    // subtract time if wrong
+
+    //increment or decrement score
+
+    //increase questionIndex by one
+
+    //if there are more questions call showCurrent Question
+
+    //otherwise call endQuiz
+}
+
+function endQuiz(){
+    //hide quizSection
+
+    //Show user details form
 
 }
 
+//this function gets called when the form submit button is clicked
+function saveScore(){
+    // read high-scores from local storage (empty array if it doesn't exist)
 
+    // add user initials and score to above array
 
+    // save updated array to local storage
+}
 
-//Need function to run timer
+function showScore(){
+    // read high-scores from local storage
 
-function countdown() {
+    // dynamically add li for each high score
 
-    // set timer to start at 75 seconds
-    var timeLeft = 75;
+    // [
+    //     {
+    //         initals:"DMG",
+    //         score: 2
+    //     }
+    // ]
+}
 
-    var quizTimer = setInterval(function () {
-        // as long as "timeleft" is greater than 1
-        timeLeft--;
-        countdownTimer.textContent = timeLeft + " seconds remaining";
-        if (timeLeft > 1) {
+function startTimer () {
+    timerCount = 75
+    quizTimer = setInterval(function () {
+        timerCount--;
+        if (timerCount > 1) {
+            countdownTimer.textContent = timerCount + " seconds remaining";
 
-        } else if (timeLeft === 1) {
-            // when timeLeft gets to 0, set countdownTimer to "second" instead of "seconds"
-            countdownTimer.textContent = timeLeft + " second remaining";
+        } else if (timerCount === 1) {
+            countdownTimer.textContent = timerCount = " second remaining";
+
         } else {
-            // Once timeLeft gets to 0, set countdownTimer to an empty string
-            countdownTimer.textContent = "";
-            //stop timer
-            clearInterval(quizTimer);
-            //do i need a display message?
-            // do i need a function to end the quiz?
-            endQuiz();
+            countdownTimer.textContent = "Time's Up!"
         }
-    }, 1000);
+    }, 1000)
 }
 
-// let timeLeft = 60; // 1 minute
-// function updateTimer() {
-//     const timerElement = document.getElementById("quizTimer");
-//     const minutes = Math.floor(timeLeft / 60);
-//     const seconds = timeLeft % 60;
-//     timerElement.textContent = Time Left: ${ minutes }:${ seconds < 10 ? "0" : "" }${ seconds };
 
-//     if (timeLeft === 0) {
-//         clearInterval(timerInterval);
-//         endQuiz();
-//     } else {
-//         timeLeft--;
-//     }
-// }
+//Countdown timer on starts on click of start button and starts quiz
 
+startButton.addEventListener("click", startQuiz )
 
-//Need function to check if answer is correct
+document.body.addEventListener('click', function(event){
+    if(event.target.className === "answers"){
+        checkScore(event.target.dataset.correct)
+    }
+})
 
 
 
-//Need function to reduce time if answer is wrong
+
+
+
+
+
+
+
+//Form to capture initials and score
 
 
 

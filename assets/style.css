@@ -60,7 +60,7 @@ main {
 }
 
 section img {
-    width: 35%;
+    width: 40%;
     border: 1px solid var(--black);
     box-shadow: 2px 2px 1px rgb(151, 141, 141);
     margin: 10px 0px 20px 0px;
@@ -92,4 +92,8 @@ button {
 
 button:hover {
     background-color: var(--darkorange);
+}
+
+.hide {
+    display: none;
 }
