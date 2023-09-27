@@ -43,7 +43,7 @@ body {
 /* Starting section */
 #start-section {
     text-align: center;
-    margin: 175px 200px 0px 200px;
+    margin: 100px 200px 0px 200px;
 }
 
 h2 {
@@ -64,6 +64,15 @@ section img {
     border: 1px solid var(--black);
     box-shadow: 2px 2px 1px rgb(151, 141, 141);
     margin: 10px 0px 20px 0px;
+}
+
+p {
+    color: white;
+    background-color: var(--green);
+    font-size: 150%;
+    text-align: center;
+    margin: 0px 300px 0px 300px;
+    border-radius: 4px 4px;
 }
 
 #start-button {
@@ -96,4 +105,15 @@ button:hover {
 
 .hide {
     display: none;
+}
+
+.answers {
+    padding: 3px;
+    background-color: var(--green);
+    margin-right: 900px;
+    border-radius: 4px 4px;
+}
+.answers:hover {
+    background-color: var(--darkorange);
+    color: white
 }

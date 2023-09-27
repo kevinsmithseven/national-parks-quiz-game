@@ -38,6 +38,8 @@ var quizSection = document.getElementById("quiz-section")
 var quizTimer;
 var timerCount;
 var createOl = document.createElement("ol");
+var createSection = document.createElement("p")
+var scoreScreen = document.getElementById("user-details")
 
 
 
@@ -47,15 +49,15 @@ function startQuiz() {
     startSection.classList.add("hide");
     quizSection.classList.remove("hide");
 
-   showCurrentQuestion();
-   startTimer()
+    showCurrentQuestion();
+    startTimer()
 }
 
-//where is event listener for user clicking on a choice?
+
 
 // Need to compare choice to correct answer; if wrong deduct penalty from timer
 
-function showCurrentQuestion(){
+function showCurrentQuestion() {
     var currentQuestion = myQuestions[questionIndex];
 
     var title = document.getElementById("question-text");
@@ -66,27 +68,58 @@ function showCurrentQuestion(){
 
         var li = document.getElementById(`answer-${i}`);
         li.textContent = choice
-        
+
         li.dataset.correct = i === currentQuestion.correctAnswer;
     }
 }
 
-function checkScore(isCorrect){
+function checkScore(isCorrect) {
     //Show either on screen or in the console if the answer is correct
-    console.log(isCorrect)
 
-    // subtract time if wrong
+    if (isCorrect) {
+        createSection.textContent = "Correct!";
+
+    } else {
+        // createSection.textContent = "Incorrect! The correct answer is " + 
+        // var correctAnswerText = myQuestions[questionIndex].questionChoices[myQuestions[questionIndex].correctAnswer];
+        createSection.textContent = "Incorrect! The correct answer is: " + correctAnswerText;
+        // subtract time if wrong
+        timerCount = timerCount - wrongPenalty;
+
+    }
+
+    document.body.appendChild(createSection);
+
+    // console.log(isCorrect)
+    // console.log(createSection);
+    // console.log(myQuestions[questionIndex].correctAnswer);
+    console.log(myQuestions[questionIndex].questionChoices[myQuestions[questionIndex].correctAnswer]);
 
     //increment or decrement score
 
     //increase questionIndex by one
-
     //if there are more questions call showCurrent Question
-
     //otherwise call endQuiz
+
+    questionIndex++;
+    if (questionIndex < myQuestions.length) {
+        showCurrentQuestion();
+
+    } else {
+        endQuiz();
+    }
 }
 
-function endQuiz(){
+function endQuiz() {
+
+    if (timerCount >= 0) {
+        var finalScore = timerCount;
+        var finalScoreMessage = document.createElement("p");
+        finalScoreMessage = "Your final score is: " + finalScore;
+
+        scoreScreen.appendChild(finalScoreMessage);
+    }
+
     //hide quizSection
 
     //Show user details form
@@ -94,7 +127,7 @@ function endQuiz(){
 }
 
 //this function gets called when the form submit button is clicked
-function saveScore(){
+function saveScore() {
     // read high-scores from local storage (empty array if it doesn't exist)
 
     // add user initials and score to above array
@@ -102,7 +135,7 @@ function saveScore(){
     // save updated array to local storage
 }
 
-function showScore(){
+function showScore() {
     // read high-scores from local storage
 
     // dynamically add li for each high score
@@ -115,7 +148,7 @@ function showScore(){
     // ]
 }
 
-function startTimer () {
+function startTimer() {
     timerCount = 75
     quizTimer = setInterval(function () {
         timerCount--;
@@ -127,6 +160,7 @@ function startTimer () {
 
         } else {
             countdownTimer.textContent = "Time's Up!"
+            clearInterval(quizTimer);
         }
     }, 1000)
 }
@@ -134,10 +168,10 @@ function startTimer () {
 
 //Countdown timer on starts on click of start button and starts quiz
 
-startButton.addEventListener("click", startQuiz )
+startButton.addEventListener("click", startQuiz)
 
-document.body.addEventListener('click', function(event){
-    if(event.target.className === "answers"){
+document.body.addEventListener('click', function (event) {
+    if (event.target.className === "answers") {
         checkScore(event.target.dataset.correct)
     }
 })
