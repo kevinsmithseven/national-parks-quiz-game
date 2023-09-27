@@ -6,7 +6,7 @@ This project is a fun, timed, multiple choice quiz game that that asks the user 
 
 Link to application:
 
-<!-- add link   -->
+https://kevinsmithseven.github.io/national-parks-quiz-game/
 
 ## Usage
 
