@@ -72,9 +72,9 @@ function showCurrentQuestion() {
 
 // Check and see if user selected the correct answer
 function checkScore(isCorrect) {
+console.log(isCorrect);
 
-
-    if (isCorrect) {
+    if (JSON.parse(isCorrect)) {
         createSection.textContent = "Correct!";
 
     } else {
@@ -89,7 +89,7 @@ function checkScore(isCorrect) {
 
     document.body.appendChild(createSection);
 
-    // console.log(isCorrect)
+    console.log(isCorrect)
     // console.log(createSection);
     // console.log(myQuestions[questionIndex].correctAnswer);
     console.log(myQuestions[questionIndex].questionChoices[myQuestions[questionIndex].correctAnswer]);
@@ -177,7 +177,7 @@ startButton.addEventListener("click", startQuiz)
 document.body.addEventListener('click', function (event) {
     if (event.target.className === "answers") {
         checkScore(event.target.dataset.correct)
-        console.log('Clicked element:', event.target);
+        console.log('Clicked element:', event.target.dataset.correct);
     }
 })
 
