@@ -21,7 +21,7 @@ const myQuestions = [{
     questionChoices: ["Redwood National Park", "Olympic National Park", "King's Canyon National Park", "Sequoia National Park"],
     correctAnswer: 3
 }]
-console.log(myQuestions);
+// console.log(myQuestions);
 
 
 
@@ -30,22 +30,19 @@ console.log(myQuestions);
 var score = 0;
 var questionIndex = 0;
 var wrongPenalty = 10;
-var questionNumber = 0;
 var startButton = document.getElementById("start-button");
 var countdownTimer = document.getElementById("timer");
 var startSection = document.getElementById("start-section")
 var quizSection = document.getElementById("quiz-section")
+var scoreScreen = document.getElementById("user-details")
 var quizTimer;
 var timerCount;
 var createOl = document.createElement("ol");
 var createSection = document.createElement("p")
-var scoreScreen = document.getElementById("user-details")
-
-
 
 // Start Game
 function startQuiz() {
-    // startSection.setAttribute.display = "none";
+    // hide start screen on click of start button
     startSection.classList.add("hide");
     quizSection.classList.remove("hide");
 
@@ -55,7 +52,7 @@ function startQuiz() {
 
 
 
-// Need to compare choice to correct answer; if wrong deduct penalty from timer
+// Iterate through questions on the array
 
 function showCurrentQuestion() {
     var currentQuestion = myQuestions[questionIndex];
@@ -73,20 +70,22 @@ function showCurrentQuestion() {
     }
 }
 
+// Check and see if user selected the correct answer
 function checkScore(isCorrect) {
-    //Show either on screen or in the console if the answer is correct
+
 
     if (isCorrect) {
         createSection.textContent = "Correct!";
 
     } else {
-        // createSection.textContent = "Incorrect! The correct answer is " + 
-        // var correctAnswerText = myQuestions[questionIndex].questionChoices[myQuestions[questionIndex].correctAnswer];
+        
+        var correctAnswerText = myQuestions[questionIndex].questionChoices[myQuestions[questionIndex].correctAnswer];
         createSection.textContent = "Incorrect! The correct answer is: " + correctAnswerText;
         // subtract time if wrong
         timerCount = timerCount - wrongPenalty;
 
     }
+    console.log(timerCount);
 
     document.body.appendChild(createSection);
 
@@ -117,17 +116,21 @@ function endQuiz() {
         var finalScoreMessage = document.createElement("p");
         finalScoreMessage = "Your final score is: " + finalScore;
 
-        scoreScreen.appendChild(finalScoreMessage);
+        // scoreScreen.appendChild(finalScoreMessage);
     }
 
     //hide quizSection
+    quizSection.classList.add("hide");
+
 
     //Show user details form
 
 }
 
-//this function gets called when the form submit button is clicked
+// call function gets called when the form submit button is clicked
 function saveScore() {
+
+
     // read high-scores from local storage (empty array if it doesn't exist)
 
     // add user initials and score to above array
@@ -138,11 +141,12 @@ function saveScore() {
 function showScore() {
     // read high-scores from local storage
 
+
     // dynamically add li for each high score
 
     // [
     //     {
-    //         initals:"DMG",
+    //         initials:"DMG",
     //         score: 2
     //     }
     // ]
@@ -166,26 +170,22 @@ function startTimer() {
 }
 
 
-//Countdown timer on starts on click of start button and starts quiz
+// Countdown timer on starts on click of start button and starts quiz
 
 startButton.addEventListener("click", startQuiz)
 
 document.body.addEventListener('click', function (event) {
     if (event.target.className === "answers") {
         checkScore(event.target.dataset.correct)
+        console.log('Clicked element:', event.target);
     }
 })
 
+console.log();
 
 
 
 
-
-
-
-
-
-//Form to capture initials and score
 
 
 
